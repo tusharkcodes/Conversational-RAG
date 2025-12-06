@@ -88,6 +88,7 @@ chat_history.extend([
         AIMessage(context = response)
     ])
     
+
 # ==================== MAIN LOOP ====================
 # print("Self-Help RAG Coach Ready! (type 'quit' to exit)\n")
 # while True:
