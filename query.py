@@ -1,28 +1,8 @@
-# from langchain_huggingface import HuggingFaceEmbeddings
-# from langchain_community.vectorstores import FAISS
 
-# FAISS_DB_PATH = "faiss_selfhelp_db"
-# embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-
-# vectorstore = FAISS.load_local(FAISS_DB_PATH, embeddings, allow_dangerous_deserialization=True)
-
-# while True:
-#     q = input("\nAsk about habits/self-help (or type 'quit'): ")
-#     if q.lower() in ["quit", "exit"]:
-#         break
-#     results = vectorstore.similarity_search(q, k=5)
-#     print("\n" + "="*60)
-#     for i, doc in enumerate(results, 1):
-#         print(f"{i}. [{doc.metadata.get('book', 'Unknown')}]")
-#         print(doc.page_content.strip()[:500] + "..." if len(doc.page_content) > 500 else doc.page_content)
-#         print("-" * 50)  
-
-
-# rag_app.py  ← Your final RAG application (run this forever)
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_community.vectorstores import FAISS
-from langchain_core.prompts import ChatPromptTemplate , MessagePlaceholder
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.output_parsers import PydanticOutputParser
 from dotenv import load_dotenv
@@ -87,7 +67,6 @@ chat_history.extend([
         HumanMessage(content = question),
         AIMessage(context = response)
     ])
-    
 
 # ==================== MAIN LOOP ====================
 # print("Self-Help RAG Coach Ready! (type 'quit' to exit)\n")
